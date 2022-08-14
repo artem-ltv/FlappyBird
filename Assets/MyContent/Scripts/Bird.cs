@@ -17,5 +17,7 @@ public class Bird : MonoBehaviour
 
     public void Die() =>
         Time.timeScale = 0f;
-    
+
+    public void AddScore() =>
+        _score++; 
 }
