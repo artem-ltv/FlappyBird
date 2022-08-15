@@ -7,6 +7,8 @@ public class Bird : MonoBehaviour
     public event UnityAction Dying;
     public event UnityAction<int> ScoreChanged;
 
+    [SerializeField] private Audio _audio;
+
     private int _score;
     private BirdMover _mover;
 
@@ -20,8 +22,11 @@ public class Bird : MonoBehaviour
         _mover.ResetBird();
     }
 
-    public void Die() =>
+    public void Die()
+    {
+        _audio.PlayLosing();
         Dying?.Invoke();
+    }
 
 
     public void AddScore()

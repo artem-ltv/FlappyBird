@@ -12,7 +12,6 @@ public class ObstacleGenerator : ObjectPool
     private void Start() =>
         Initialize(_template);
     
-
     private void Update()
     {
         _elapsedTime += Time.deltaTime;

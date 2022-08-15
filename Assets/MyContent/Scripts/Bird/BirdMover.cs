@@ -10,15 +10,16 @@ public class BirdMover : MonoBehaviour
     [SerializeField] private float _minRotationZ;
     [SerializeField] private float _maxRotationZ;
 
+    [SerializeField] private Audio _audio;
+
     private Rigidbody2D _rigidbody;
     private Quaternion _minRotation;
     private Quaternion _maxRotation;
 
-
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-
+       
         _minRotation = Quaternion.Euler(0, 0, _minRotationZ);
         _maxRotation = Quaternion.Euler(0, 0, _maxRotationZ);
 
@@ -27,11 +28,12 @@ public class BirdMover : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             _rigidbody.velocity = new Vector2(_moveSpeed, 0);
             transform.rotation = _maxRotation;
             _rigidbody.AddForce(Vector2.up * _tapForce, ForceMode2D.Force);
+            _audio.PlayWingFlap();
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
