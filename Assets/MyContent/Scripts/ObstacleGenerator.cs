@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleGenerator : ObjectPool
@@ -11,10 +9,9 @@ public class ObstacleGenerator : ObjectPool
 
     private float _elapsedTime = 0;
 
-    private void Start()
-    {
+    private void Start() =>
         Initialize(_template);
-    }
+    
 
     private void Update()
     {
